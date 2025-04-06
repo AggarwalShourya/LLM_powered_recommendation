@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from dotenv import load_dotenv
 import os
-
+from langchain_google_vertexai import VertexAIEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
@@ -30,7 +30,8 @@ Job Level: {row['job level']}
 Languages: {row['languages']}""", axis=1)
 
     #embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    #embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    embeddings = VertexAIEmbeddings(model="text-embedding-004")
     embedding_dim = len(embeddings.embed_query("hello world"))
     index = faiss.IndexFlatL2(embedding_dim)
 
