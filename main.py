@@ -19,7 +19,7 @@ import os
 load_dotenv() 
 api_key = os.getenv("GOOGLE_API_KEY")
 
-df=pd.read_csv("D:\SHL\Data.csv")
+df=pd.read_csv("Data.csv")
 #print(len(df))
 
 df["combined"] = df.apply(lambda row: f"""Title: {row['title']}
