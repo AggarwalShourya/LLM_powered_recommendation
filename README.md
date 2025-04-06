@@ -12,6 +12,10 @@ To run this project on your local machine, follow these steps:
 # Clone the repository
 git clone https://github.com/your-username/LLM_powered_recommendation.git
 
+# create a google API key and create a .env folder
+GOOGLE_API_KEY=""
+# inside the .env folder
+
 # Navigate to the project directory
 cd LLM_powered_recommendation
 
