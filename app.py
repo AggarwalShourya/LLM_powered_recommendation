@@ -22,7 +22,7 @@ st.title("🔍 SHL Assessment Recommender")
 
 @st.cache_resource
 def load_model_and_data():
-    df = pd.read_csv("D:/SHL/Data.csv")
+    df = pd.read_csv("Data.csv")
     df["combined"] = df.apply(lambda row: f"""Title: {row['title']}
 Description: {row['description']}
 Assessment Length: {row['Assesment Length']}
