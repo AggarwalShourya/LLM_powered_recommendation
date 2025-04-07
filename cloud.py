@@ -35,7 +35,7 @@ Languages: {row['languages']}""", axis=1)
     #embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
     #embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     #embeddings = VertexAIEmbeddings(model="text-embedding-004")
-    embeddings = HuggingFaceInferenceAPIEmbeddings(api_key=inference_api_key, model_name="sentence-transformers/all-MiniLM-L6-v2")
+    embeddings = HuggingFaceInferenceAPIEmbeddings(api_key=inference_api_key, model_name="sentence-transformers/all-mpnet-base-v2")
     embedding_dim = len(embeddings.embed_query("hello world"))
     index = faiss.IndexFlatL2(embedding_dim)
 
