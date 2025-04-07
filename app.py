@@ -9,7 +9,6 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.vectorstores import FAISS
 from langchain_community.docstore.in_memory import InMemoryDocstore
-from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain.docstore.document import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 import faiss
@@ -17,7 +16,6 @@ import faiss
 # Load env vars
 load_dotenv()
 api_key = os.getenv("GOOGLE_API_KEY")
-inference_api_key=os.getenv("HF_TOKEN")
 
 st.set_page_config(page_title="SHL Assessment Recommender", page_icon="🧠")
 st.title("🔍 SHL Assessment Recommender")
@@ -31,10 +29,9 @@ Assessment Length: {row['Assesment Length']}
 Job Level: {row['job level']}
 Languages: {row['languages']}""", axis=1)
 
-    #embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
     #embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     #embeddings = VertexAIEmbeddings(model="text-embedding-004")
-    embeddings = HuggingFaceInferenceAPIEmbeddings(api_key=inference_api_key, model_name="sentence-transformers/all-MiniLM-L6-v2")
     embedding_dim = len(embeddings.embed_query("hello world"))
     index = faiss.IndexFlatL2(embedding_dim)
 
