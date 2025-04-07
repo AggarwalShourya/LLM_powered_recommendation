@@ -17,7 +17,7 @@ import faiss
 # Load env vars
 load_dotenv()
 
-api_key = st.secrets("GOOGLE_API_KEY")
+api_key = st.secrets["GOOGLE_API_KEY"]
 inference_api_key = st.secrets["HF_TOKEN"]
 
 st.set_page_config(page_title="SHL Assessment Recommender", page_icon="🧠")
